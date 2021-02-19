@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("My Web Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    @{ if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">@Html.ActionLink("Create Character", "CreateCharacter", "Character", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Select Character", "SelectCharacter", "Character", null, new { @class = "nav-link" })</li>
+                        };
+
+                        if (User.IsInRole("Manager"))
+                        {
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Management</a>
+                                <div class="dropdown-menu">
+                                    @if (User.IsInRole("ClassManager"))
+                                    {
+                                        @Html.ActionLink("Classes", "Index", "ClassSubclass", null, new { @class = "dropdown-item" })
+                                    }
+                                    @if (User.IsInRole("ItemManager"))
+                                    {
+                                        @Html.ActionLink("Items", "Index", "Items", null, new { @class = "dropdown-item" })
+                                    }
+                                    @if (User.IsInRole("SpellManager"))
+                                    {
+                                        @Html.ActionLink("Spells", "Index", "Spells", null, new { @class = "dropdown-item" })
+                                    }
+                                </div>
+                            </li>
+                        }
+
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+
+</body>
+</html>

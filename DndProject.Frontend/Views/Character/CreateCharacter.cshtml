@@ -1,0 +1,273 @@
+﻿@model DnD_Project.Models.CharacterModels.ViewModels.CreateCharacterViewModel
+
+@{
+    ViewBag.Title = "CreateCharacter";
+}
+
+<h2>CharacterCreation</h2>
+
+
+<body>
+    @using (Html.BeginForm("CreateCharacter", "Character", FormMethod.Post,
+        new
+        {
+            @id = "CreateCharacterForm",
+            @enctype = "multipart/form-data"
+        }
+        ))
+    {
+        @Html.AntiForgeryToken();
+
+        @Html.ValidationSummary();
+
+
+
+        <div class="col-12" id="basicInfoCol">
+            <div class="card" id="basicInfoCard">
+                <!--row 1-->
+                <div class="d-flex justify-content-around" id="InfoAndStatsCardRow1">
+
+                    @Html.TextBoxFor(model => model.BaseInfoViewModel.CharacterName, new { @class = "col", @placeholder = "Name" })
+
+                    @Html.DropDownListFor(model => model.BaseInfoViewModel.Race_id,
+                   new SelectList(Model.Races, "Race_id", "RaceName"),
+                   "Race",
+                   new { @class = "col" })
+
+
+
+                    @Html.DropDownListFor(model => model.BaseInfoViewModel.Alignment, new[]
+    {
+               new SelectListItem(){Text="Lawful Good", Value="Lawful Good"},
+               new SelectListItem(){Text="Neutral Good", Value="Neutral Good"},
+               new SelectListItem(){Text="Chaotic Good", Value="Chaotic Good"},
+               new SelectListItem(){Text="Lawful Neutral", Value="Lawful Neutral"},
+               new SelectListItem(){Text="True neutral", Value="True neutral"},
+               new SelectListItem(){Text="Chaotic neutral", Value="Chaotic neutral"},
+               new SelectListItem(){Text="Lawful Evil", Value="Lawful Evil"},
+               new SelectListItem(){Text="Neutral Evil", Value="Neutral Evil"},
+               new SelectListItem(){Text="Chaotic Evil", Value="Chaotic Evil"},
+           }, "Choose your alignment", new { @class = "col" })
+                </div>
+                <!--Row 2-->
+                <div class="d-flex justify-content-around" id="InfoAndStatsCardRow2">
+
+                    @Html.TextBoxFor(model => model.BaseInfoViewModel.Exp, new { @class = "col", @placeholder = "Experience" })
+
+                    @Html.TextBoxFor(model => model.BaseInfoViewModel.Background, new { @class = "col", @placeholder = "Background" })
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <div id="CombatAndHealthInfoCard" class="card">
+                <div class="d-flex justify-content-around" id="CombatAndHealthRow">
+
+
+                    @Html.TextBoxFor(model => model.CombatViewModel.ArmorClass, new { @class = "col", @placeholder = "Armor Class" })
+
+                    @Html.TextBoxFor(model => model.CombatViewModel.MovementSpeed, new { @class = "col", @placeholder = "Movement Speed" })
+
+                    @Html.TextBoxFor(model => model.CombatViewModel.InitiativeBonus, new { @class = "col", @placeholder = "Initiative Bonus" })
+
+                    @Html.TextBoxFor(model => model.HealthViewModel.MaxHP, new { @class = "col", @placeholder = "Max HP" })
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <div id="StatsAndProficienciesCard" class="card">
+                <div class="d-flex justify-content-around" id="StatsRow1">
+
+
+                    @Html.TextBoxFor(model => model.StatsViewModel.Strength, new { @class = "col", @placeholder = "Strength" })
+
+                    @Html.TextBoxFor(model => model.StatsViewModel.Dexterity, new { @class = "col", @placeholder = "Dexterity" })
+
+                    @Html.TextBoxFor(model => model.StatsViewModel.Constitution, new { @class = "col", @placeholder = "Constitution" })
+
+
+                </div>
+
+                <div class="d-flex justify-content-around" id="StatsRow2">
+
+                    @Html.TextBoxFor(model => model.StatsViewModel.Intelligence, new { @class = "col", @placeholder = "Intelligence" })
+
+                    @Html.TextBoxFor(model => model.StatsViewModel.Wisdom, new { @class = "col", @placeholder = "Wisdom" })
+
+                    @Html.TextBoxFor(model => model.StatsViewModel.Charisma, new { @class = "col", @placeholder = "Charisma" })
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <div id="SaveProficienciesCard" class="card">
+                <div class="d-flex justify-content-around" id="SaveProficienciesRow1">
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="StrengthSave">Strength</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.StrengthSave, new { @class = "form-check-input", @id = "StrengthSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="DexteritySave">Dexterity</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.DexteritySave, new { @class = "form-check-input", @id = "DexteritySave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="ConstitutionSave">Constitution</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.ConstitutionSave, new { @class = "form-check-input", @id = "ConstitutionSave" })
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-around" id="SaveProficienciesRow2">
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="IntelligenceSave">Intelligence</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.IntelligenceSave, new { @class = "form-check-input", @id = "IntelligenceSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="WisdomSave">Wisdom</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.WisdomSave, new { @class = "form-check-input", @id = "WisdomSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="CharismaSave">Charisma</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.CharismaSave, new { @class = "form-check-input", @id = "CharismaSave" })
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <div id="SkillProficienciesCard" class="card">
+                <div id="SkillProficienciesRow1" class="d-flex justify-content-around">
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Acrobatics">Acrobatics</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Acrobatics, new { @class = "form-check-input", @id = "AcrobaticsSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="AnimalHandling">AnimalHandling</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.AnimalHandling, new { @class = "form-check-input", @id = "AnimalHandlingSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Arcana">Arcana</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Arcana, new { @class = "form-check-input", @id = "ArcanaSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Athletics">Athletics</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Athletics, new { @class = "form-check-input", @id = "AthleticsSave" })
+                    </div>
+                </div>
+                <div id="SkillProficienciesRow2" class="d-flex justify-content-around">
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Deception">Deception</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Deception, new { @class = "form-check-input", @id = "DeceptionSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="History">History</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.History, new { @class = "form-check-input", @id = "HistorySave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Intimidation">Intimidation</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Intimidation, new { @class = "form-check-input", @id = "IntimidationSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Investigation">Investigation</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Investigation, new { @class = "form-check-input", @id = "InvestigationSave" })
+                    </div>
+                </div>
+                <div id="SkillProficienciesRow3" class="d-flex justify-content-around">
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Medicine">Medicine</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Medicine, new { @class = "form-check-input", @id = "MedicineSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Nature">Nature</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Nature, new { @class = "form-check-input", @id = "NatureSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Perception">Perception</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Perception, new { @class = "form-check-input", @id = "PerceptionSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Performance">Performance</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Performance, new { @class = "form-check-input", @id = "PerformanceSave" })
+                    </div>
+                </div>
+                <div id="SkillProficienciesRow4" class="d-flex justify-content-around">
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Persuasion">Persuasion</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Persuasion, new { @class = "form-check-input", @id = "PersuasionSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Religion">Religion</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Religion, new { @class = "form-check-input", @id = "ReligionSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="SleightOfHand">SleightOfHand</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.SleightOfHand, new { @class = "form-check-input", @id = "SleightOfHandSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Stealth">Stealth</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Stealth, new { @class = "form-check-input", @id = "StealthSave" })
+                    </div>
+                    <div class="form-check-label form-check-inline">
+                        <label class="form-check-label" for="Survival">Survival</label>
+                        @Html.CheckBoxFor(model => model.IsProficientViewModel.Survival, new { @class = "form-check-input", @id = "SurvivalSave" })
+                    </div>
+                </div>
+            </div>
+
+            <div id="CurrencyCard" class="card">
+                <div class="d-flex justify-content-around">
+                    @Html.TextBoxFor(model => model.CurrencyViewModel.PlatinumPieces, new { @class = "col", @placeholder = "PP" })
+
+                    @Html.TextBoxFor(model => model.CurrencyViewModel.GoldPieces, new { @class = "col", @placeholder = "GP" })
+
+                    @Html.TextBoxFor(model => model.CurrencyViewModel.ElectrumPieces, new { @class = "col", @placeholder = "EP" })
+
+                    @Html.TextBoxFor(model => model.CurrencyViewModel.SilverPieces, new { @class = "col", @placeholder = "SP" })
+
+                    @Html.TextBoxFor(model => model.CurrencyViewModel.CopperPieces, new { @class = "col", @placeholder = "CP" })
+
+                </div>
+            </div>
+
+
+
+            <div id="CharacterClassCard" class="card">
+                <button id="AddClassButton"> Add a class!</button>
+               <!-- ---------NYI------ Need to add some way for options in Subbclass dropdown to change based upon the selected class. -->
+                <div class="d-flex justify-content-around">
+
+                    <input type="hidden" name="SelectedClasses.Index" value="0" />
+
+                    @Html.DropDownList("SelectedClasses[0].Class_id",
+                   new SelectList(Model.Classes, "Class_id", "ClassName"),
+                   "Select A Class",
+                   new { @class = "col" })
+
+                    @Html.TextBox("SelectedClasses[0].ClassLevel", null, new { @class = "col" })
+
+                    @Html.DropDownList("SelectedClasses[0].Subclass_id",
+                   new SelectList(Model.Subclasses, "Subclass_id", "SubclassName"),
+                   "Select A Subclass",
+                   new { @class = "col" })
+
+                </div>
+
+            </div>
+        </div>
+        <div id="NotesCard" class="card">
+            <button id="AddNoteButton" >Add a note!</button>
+            <div class="d-flex justify-content-around">
+                <input type="hidden" name="Notes.Index" value="0" />
+                @Html.TextBox("Notes[0].NoteName")
+
+                @Html.TextArea("Notes[0].Contents")
+
+
+            </div>
+        </div>
+        <input type="submit" value="Submit" />
+
+    }
+    @Scripts.Render("~/Scripts/custom/CreateCharacter.js")
+</body>
+
