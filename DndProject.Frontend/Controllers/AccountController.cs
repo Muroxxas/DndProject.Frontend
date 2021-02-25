@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DndProject.Frontend.Models;
+using SendGrid;
+using DnDProject.Backend.Processors.Interfaces.SendGrid;
+using DnDProject.Backend.Processors.Implementations.Sendgrid;
 
 namespace DndProject.Frontend.Controllers
 {
@@ -17,7 +20,8 @@ namespace DndProject.Frontend.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private static IEmailFactory _emailFactory = EmailFormatMetaFactory.getBasicEmailFactory();
+        private IRegistrationEmailFormat _registerEmailFormat = _emailFactory.getRegistrationFormat();
         public AccountController()
         {
         }
@@ -155,15 +159,21 @@ namespace DndProject.Frontend.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                    //Create registration email and sends it via SendGrid API.
+
+                    var apiKey = Environment.GetEnvironmentVariable("DND_API_KEY");
+                    var client = new SendGridClient(apiKey);
+                    var msg = _registerEmailFormat.CreateRegistrationMessage(model.Email, callbackUrl);
+
+                    var response = await client.SendEmailAsync(msg);
+
+                    ViewBag.Message = "Check your email and confirm your account. you must be confirmed before you can log in.";
+
+                    return View("Info");
                 }
                 AddErrors(result);
             }
