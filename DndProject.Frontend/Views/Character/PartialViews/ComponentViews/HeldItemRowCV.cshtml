@@ -1,0 +1,40 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.HeldItemRowCM
+
+<tr class="itemRow">
+    @Html.Hidden($"Model.InventoryTab.Items.Index", Model.Index)
+    <td scope="col">@Model.Name</td>
+
+    @if (Model.isEquippable == true)
+    {
+        <td scope="col">
+            @Html.CheckBox($"Model.InventoryTab.Items[{Model.Index}].isEquipped", new { @class = "form-input" })
+        </td>
+    }
+    else
+    {
+        <td scope="col" data-toggle="popover" data-trigger="hover" data-content="This item cannot be equipped">
+            @Html.CheckBox("null", new { @class = "form-input", @disabled = "disabled" })
+        </td>
+    }
+
+    @if (Model.requiresAttunement == true)
+    {
+        <td scope="col">
+            @Html.CheckBox($"Model.InventoryTab.Items[{Model.Index}].isAttuned", new { @class = "form-input" })
+        </td>
+    }
+    else
+    {
+        <td scope="col" data-toggle="popover" data-trigger="hover" data-content="This item does not require attunement">
+            @Html.CheckBox("null", new { @class = "form-input", @disabled = "disabled" })
+        </td>
+    }
+
+    <td>
+        @Model.Value
+    </td>
+    <td>
+        @Html.Hidden("Item_id", Model.Item_id)
+        <button class="btn btn-outline-info heldItemMoreInfoButton">More...</button> 
+    </td>
+</tr>

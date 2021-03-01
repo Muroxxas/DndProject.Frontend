@@ -1,0 +1,24 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.MoneyCM
+
+<div class="form-row">
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.PlatinumPieces, "Platinum", new { @class = "form-label" });
+        @Html.TextBoxFor(Model => Model.PlatinumPieces, new { @class = "form-input" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GoldPieces, "Gold", new { @class = "form-label" });
+        @Html.TextBoxFor(Model => Model.GoldPieces, new { @class = "form-input" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.ElectrumPieces, "Electrum", new { @class = "form-label" });
+        @Html.TextBoxFor(Model => Model.ElectrumPieces, new { @class = "form-input" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.SilverPieces, "Silver", new { @class = "form-label" });
+        @Html.TextBoxFor(Model => Model.SilverPieces, new { @class = "form-input" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CopperPieces, "Copper", new { @class = "form-label" });
+        @Html.TextBoxFor(Model => Model.CopperPieces, new { @class = "form-input" })
+    </div>
+</div>

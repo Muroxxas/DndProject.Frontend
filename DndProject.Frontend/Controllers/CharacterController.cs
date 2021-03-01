@@ -1,6 +1,8 @@
 ﻿using DnDProject.Backend.Services.Interfaces;
 using DnDProject.Entities.Character.ViewModels;
+using DnDProject.Entities.Character.ViewModels.PartialViewModels.Components;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,6 +114,51 @@ namespace DndProject.Frontend.Controllers
         public ActionResult CharacterLearnsSpell(string Character_id, string Spell_id)
         {
             throw new NotImplementedException();
+        }
+
+
+        //------Read------
+        [HttpGet]
+        public ActionResult SearchItems(string searchString, string getItemsBy, string currentFilter, int? page)
+        {
+            throw new NotImplementedException();
+            if(searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            ViewBag.currentGetItemsBy = getItemsBy;
+            IPagedList<foundItemCM> result = _implementation.SearchItems(searchString, getItemsBy, currentFilter, page);
+            if (result.Count > 0)
+            {
+                //itemSearchResult partial view NYI.
+            }
+            else 
+            {
+                //return a view that shows no results found.
+            };
+
+        }
+        [HttpGet]
+        public ActionResult GetItemDetails(string item_id)
+        {
+            Guid Item_id = Guid.Parse(item_id);
+            if(_implementation.ItemExists(Item_id) == true)
+            {
+                ItemDetailsCM details = _implementation.GetItemDetailsCM(Item_id);
+
+                //foundItemDetails partial view NYI.
+                throw new NotImplementedException();
+                
+            }
+            else
+            {
+                return new HttpStatusCodeResult(500);
+            }
         }
 
         //------Delete------

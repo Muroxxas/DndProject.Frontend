@@ -1,0 +1,19 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.InventoryTabVM
+
+<button class="btn btn-outline-primary" if="openItemSearchMenuButton">Add Item...</button>
+<table class="table" id="inventoryTable">
+    <thead>
+        <tr>
+            <th scope="col"> Name</th>
+            <th scope="col"> Equipped</th>
+            <th scope="col"> Attuned</th>
+            <th scope="col"> Count</th>
+            <th scope="col"> Value</th>
+            <th scope="col"> Details</th>
+        </tr>
+    </thead>
+    @for(int i=0; i < Model.Items.Length; i++)
+    {
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/HeldItemRowCV.cshtml", Model.Items[i])
+    }
+</table>

@@ -1,0 +1,38 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.ItemDetailsCM
+
+
+    <div class="card-title">
+        @Model.Name
+    </div>
+    <div class="card-body">
+        <div class="card-subtitle mb-1 text-muted">
+            @if (Model.isConsumable)
+            {
+                <i>Consumable, </i>
+            }
+            @if (Model.requiresAttunement)
+            {
+                <i>Requires Attunement, </i>
+            }
+            @foreach(string tag in Model.Tags)
+            {
+                if(Model.Tags.Last() != tag)
+                {
+                    <i>@tag, </i>
+                }
+                else
+                {
+                    <i>@tag</i>
+                }
+            }
+
+        </div>
+        <div class="card-subtitle mb-1 text-muted">
+            <i>Value : @Model.Value Gold Pieces</i>
+        </div>
+        <div class="card-text">
+            @Model.Description
+        </div>
+    </div>
+
+

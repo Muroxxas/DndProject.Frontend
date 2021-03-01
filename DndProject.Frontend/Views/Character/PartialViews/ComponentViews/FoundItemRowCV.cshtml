@@ -1,0 +1,8 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.foundItemCM
+
+<div class="card">
+    <div class="card-body">
+        @Html.HiddenFor(Model => Model.Item_id)
+        <button class="btn stretched-link foundItemDetailsButton">@Model.Name</button>
+    </div>
+</div>

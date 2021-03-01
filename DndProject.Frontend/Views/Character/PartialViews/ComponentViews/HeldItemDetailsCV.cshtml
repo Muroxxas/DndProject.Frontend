@@ -1,0 +1,8 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.ItemDetailsCM
+
+<div class="card">
+    @Html.Partial("~/Views/Character/PartialViews/ComponentViews/ItemDetailsCV.cshtml", Model)
+
+    @Html.HiddenFor(Model => Model.Item_id)
+    <button class="btn btn-success loseItemButton">Remove from inventory</button>
+</div>
