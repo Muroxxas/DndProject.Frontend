@@ -1,0 +1,12 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.NoteCM
+
+<li class="nav-item">
+    @if (Model.Index == 0)
+    {
+        <a class="nav-link active" id="@($"{Model.Name}{Model.Index}-tab")" data-toggle="tab" href="@($"#{Model.Name}{Model.Index}")" role="tab" aria-controls="@($"{Model.Name}{Model.Index}")" aria-selected="true">@Model.Name</a>
+    }
+    else
+    {
+        <a class="nav-link" id="@($"{Model.Name}{Model.Index}-tab")" data-toggle="tab" href="@($"#{Model.Name}{Model.Index}")" role="tab" aria-controls="@($"{Model.Name}{Model.Index}")" aria-selected="false">@Model.Name</a>
+    }
+</li>

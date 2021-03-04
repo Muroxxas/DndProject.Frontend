@@ -1,0 +1,12 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.NoteCM
+
+
+@Html.Hidden($"Model.Notes.Index", Model.Index)
+<div class="form-group">
+    @Html.Label($"Model.Notes.Notes[{Model.Index}].Name", "Note Name", new { @class = "form-label" })
+    @Html.TextBox($"Model.Notes.Notes[{Model.Index}].Name", Model.Name, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.Label($"Model.Notes.Notes[{Model.Index}].Contents", "Contents", new { @class = "form-label" })
+    @Html.TextArea($"Model.Notes.Notes[{Model.Index}].Contents", Model.Contents, new { @class = "form-control" })
+</div>
