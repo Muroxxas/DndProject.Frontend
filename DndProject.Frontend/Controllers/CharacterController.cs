@@ -101,7 +101,19 @@ namespace DndProject.Frontend.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CharacterObtainsItem(string Character_id, string Item_id, string Index)
         {
-            throw new NotImplementedException();
+            Guid item_id = Guid.Parse(Item_id);
+            Guid character_id = Guid.Parse(Character_id);
+            Guid user_id = Guid.Parse(User.Identity.GetUserId());
+            if(_implementation.ItemExists(item_id) && _implementation.CharacterExists(character_id))
+            {
+               HeldItemRowCM cm = _implementation.CharacterObtainsItem(user_id, character_id, item_id);
+                return PartialView("~/Views/Character/PartialViews/ComponentViews/HeldItemRowCV.cshtml", cm);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(500);
+            }
+
         }
 
         [HttpGet]
@@ -121,39 +133,46 @@ namespace DndProject.Frontend.Controllers
         [HttpGet]
         public ActionResult SearchItems(string searchString, string getItemsBy, string currentFilter, int? page)
         {
-            throw new NotImplementedException();
             if(searchString != null)
             {
+                //User made a new search query - send them back to the first page of this new query.
                 page = 1;
             }
             else
             {
+                //user is NOT making a new search, so they must be reusing the current filter.
                 searchString = currentFilter;
             }
             ViewBag.CurrentFilter = searchString;
             ViewBag.currentGetItemsBy = getItemsBy;
             IPagedList<foundItemCM> result = _implementation.SearchItems(searchString, getItemsBy, currentFilter, page);
-            if (result.Count > 0)
-            {
-                //itemSearchResult partial view NYI.
-            }
-            else 
-            {
-                //return a view that shows no results found.
-            };
 
+            return PartialView("~/Views/Character/PartialViews/ComponentViews/ItemSearchResultsCV.cshtml", result);
         }
         [HttpGet]
-        public ActionResult GetItemDetails(string item_id)
+        public ActionResult FoundItemDetails(string item_id)
         {
             Guid Item_id = Guid.Parse(item_id);
             if(_implementation.ItemExists(Item_id) == true)
             {
                 ItemDetailsCM details = _implementation.GetItemDetailsCM(Item_id);
+                return PartialView("~/Views/Character/PartialViews/ComponentViews/foundItemDetailsCV.cshtml", details);
 
-                //foundItemDetails partial view NYI.
-                throw new NotImplementedException();
-                
+            }
+            else
+            {
+                return new HttpStatusCodeResult(500);
+            }
+        }
+        [HttpGet]
+        public ActionResult HeldItemDetails(string item_id)
+        {
+            Guid Item_id = Guid.Parse(item_id);
+            if (_implementation.ItemExists(Item_id) == true)
+            {
+                ItemDetailsCM details = _implementation.GetItemDetailsCM(Item_id);
+                return PartialView("~/Views/Character/PartialViews/ComponentViews/HeldItemDetailsCV.cshtml", details);
+
             }
             else
             {
