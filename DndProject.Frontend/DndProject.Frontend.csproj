@@ -413,6 +413,7 @@
     <Content Include="Views\Character\PartialViews\ComponentViews\NoteNavCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\NoteContentBaseCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\NoteContentCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\NotesTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

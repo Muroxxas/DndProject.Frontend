@@ -1,0 +1,15 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.NoteTabVM
+
+<ul class="nav nav-tabs" id="notesInnerTab" role="tablist">
+    @for(int i=0;i< Model.Notes.Length; i++)
+    {
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/NoteNavCV.cshtml", Model.Notes[i])
+    }
+</ul>
+
+<div class="tab-content" id="notesInnerTabContents">
+    @for(int i=0; i < Model.Notes.Length; i++)
+    {
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/NoteContentCV.cshtml", Model.Notes[i])
+    }
+</div>
