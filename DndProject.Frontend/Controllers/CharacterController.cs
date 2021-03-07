@@ -143,8 +143,6 @@ namespace DndProject.Frontend.Controllers
                 //user is NOT making a new search, so they must be reusing the current filter.
                 searchString = currentFilter;
             }
-            ViewBag.CurrentFilter = searchString;
-            ViewBag.currentGetItemsBy = getItemsBy;
             ItemSearchResultCM result = _implementation.SearchItems(searchString, getItemsBy, page);
 
             return PartialView("~/Views/Character/PartialViews/ComponentViews/ItemSearchResultsCV.cshtml", result);
@@ -173,6 +171,53 @@ namespace DndProject.Frontend.Controllers
                 ItemDetailsCM details = _implementation.GetItemDetailsCM(Item_id);
                 return PartialView("~/Views/Character/PartialViews/ComponentViews/HeldItemDetailsCV.cshtml", details);
 
+            }
+            else
+            {
+                return new HttpStatusCodeResult(500);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult SearchSpells(string searchString, string getSpellsBy, string currentFilter, int? page)
+        {
+            if (searchString != null)
+            {
+                //User made a new search query - send them back to the first page of this new query.
+                page = 1;
+            }
+            else
+            {
+                //user is NOT making a new search, so they must be reusing the current filter.
+                searchString = currentFilter;
+            }
+            SpellSearchResultCM result = _implementation.SearchSpells(searchString, getSpellsBy, page);
+
+            return PartialView("~/Views/Character/PartialViews/ComponentViews/SpellSearchResultCV.cshtml", result);
+        }
+
+        [HttpGet]
+        public ActionResult FoundSpellDetails(string Spell_id)
+        {
+            Guid spell_id = Guid.Parse(Spell_id);
+            if (_implementation.SpellExists(spell_id))
+            {
+                SpellDetailsCM details = _implementation.GetSpellDetailsCM(spell_id);
+                return PartialView("~/Views/Character/PartialViews/ComponentViews/FoundSpellDetailsCV.cshtml", details);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(500);
+            }
+        }
+        [HttpGet]
+        public ActionResult KnownSpellDetails(string Spell_id)
+        {
+            Guid spell_id = Guid.Parse(Spell_id);
+            if (_implementation.SpellExists(spell_id))
+            {
+                SpellDetailsCM details = _implementation.GetSpellDetailsCM(spell_id);
+                return PartialView("~/Views/Character/PartialViews/ComponentViews/KnownSpellDetailsCV.cshtml", details);
             }
             else
             {
