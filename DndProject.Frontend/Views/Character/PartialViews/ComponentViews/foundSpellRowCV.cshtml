@@ -1,0 +1,8 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.foundSpellCM
+
+<div class="card">
+    <div class="card-body">
+        @Html.Hidden($"foundSpell_id",Model.Spell_id)
+        <button class="btn stretched-link foundSpellDetailsButton">@Model.Name</button>
+    </div>
+</div>

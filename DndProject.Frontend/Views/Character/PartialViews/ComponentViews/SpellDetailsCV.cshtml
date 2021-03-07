@@ -1,0 +1,76 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.SpellDetailsCM
+
+<div class="card-title">
+    @Model.Name
+</div>
+<div class="card-body">
+    <div class="card-subtitle mb-1 text-muted">
+        @if (Model.Level == 0)
+        {
+            <i>@Model.School Cantrip</i>
+        }
+        else
+        {
+            <i>Level @Model.Level @Model.School</i>
+        }
+        <br />
+    </div>
+    <div>
+        <i>Casting Time : @Model.CastingTime</i>
+        <br />
+        <i>Range : @Model.Range</i>
+        <br />
+        <i>Duration : @Model.Duration</i>
+        <div class="form-row">
+            <i>
+                Verbal : @if (Model.RequiresVerbal)
+                {
+                    <i class="bi-check" style="color:forestgreen" aria-label="Requires verbal"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color:firebrick" aria-label="Does not require verbal"></i>
+                }
+            </i>
+            <i>
+                Somantic : @if (Model.RequiresSomantic)
+                {
+                    <i class="bi-check" style="color:forestgreen" aria-label="Requires somantic"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color:firebrick" aria-label="Does not require somantic"></i>
+                }
+            </i>
+            <i>
+                Material : @if (Model.RequiresMaterial)
+                {
+                    <i class="bi-check" style="color:forestgreen" aria-label="Requires materials"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color:firebrick" aria-label="Does not require materials"></i>
+                }
+            </i>
+            <i>
+                Concentration : @if (Model.RequiresConcentration)
+                {
+                    <i class="bi-check" style="color:forestgreen" aria-label="Requires concentration"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color:firebrick" aria-label="Does not require concentration"></i>
+                }
+            </i>
+        </div>
+        <div class="form-row">
+            @if (Model.RequiresMaterial)
+            {
+                @Model.Material
+            }
+        </div>
+    </div>
+    <div class="form-row">
+        @Model.Description
+    </div>
+</div>

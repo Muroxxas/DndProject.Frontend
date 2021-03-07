@@ -1,22 +1,48 @@
 ﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.ItemDetailsCM
 
 
-    <div class="card-title">
-        @Model.Name
-    </div>
-    <div class="card-body">
-        <div class="card-subtitle mb-1 text-muted">
-            @if (Model.isConsumable)
+<div class="card-title">
+    @Model.Name
+</div>
+<div class="card-body">
+    <div class="card-subtitle mb-1 text-muted">
+
+        <div class="form-row">
+            <i>
+                Consumable : @if (Model.isConsumable)
+                {
+                    <i class="bi-check" style="color: forestgreen"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color: firebrick"></i>
+                }
+            </i>
+            <i>
+                Equippable : @if (Model.isEquippable)
+                {
+                    <i class="bi-check" style="color: forestgreen"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color: firebrick"></i>
+                }
+            </i>
+            <i>
+                Requires Attunement : @if (Model.requiresAttunement)
+                {
+                    <i class="bi-check" style="color: forestgreen"></i>
+                }
+                else
+                {
+                    <i class="bi-x" style="color: firebrick"></i>
+                }
+            </i>
+        </div>
+        <div class="form-row">
+            @foreach (string tag in Model.Tags)
             {
-                <i>Consumable, </i>
-            }
-            @if (Model.requiresAttunement)
-            {
-                <i>Requires Attunement, </i>
-            }
-            @foreach(string tag in Model.Tags)
-            {
-                if(Model.Tags.Last() != tag)
+                if (Model.Tags.Last() != tag)
                 {
                     <i>@tag, </i>
                 }
@@ -25,14 +51,13 @@
                     <i>@tag</i>
                 }
             }
-
-        </div>
-        <div class="card-subtitle mb-1 text-muted">
-            <i>Value : @Model.Value Gold Pieces</i>
-        </div>
-        <div class="card-text">
-            @Model.Description
         </div>
     </div>
 
-
+    <div class="card-subtitle mb-1 text-muted">
+        <i>Value : @Model.Value Gold Pieces</i>
+    </div>
+    <div class="card-text">
+        @Model.Description
+    </div>
+</div>

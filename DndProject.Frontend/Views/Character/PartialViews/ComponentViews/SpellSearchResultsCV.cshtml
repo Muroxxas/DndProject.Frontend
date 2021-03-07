@@ -1,0 +1,23 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.SpellSearchResultCM
+@using PagedList.Mvc;
+@if (Model.foundSpells.Count == 0)
+{
+    <p>
+        Oh dear! it seems there were no items found with that query.
+    </p>
+}
+else
+{
+    for (int i = 0; i < Model.foundSpells.Count; i++)
+    {
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/foundSpellRowCV.cshtml", Model.foundSpells[i])
+    }
+
+    <p>
+        Page @(Model.foundSpells.PageCount < Model.foundSpells.PageNumber ? 0 : Model.foundSpells.PageNumber) of @Model.foundSpells.PageCount
+    
+        @Html.PagedListPager(Model.foundSpells, page => Url.Action("SearchSpells",
+       new { page, currentFilter = Model.currentFilter, getSpellsBy = Model.currentGetSpellsBy}))
+    </p>
+
+}

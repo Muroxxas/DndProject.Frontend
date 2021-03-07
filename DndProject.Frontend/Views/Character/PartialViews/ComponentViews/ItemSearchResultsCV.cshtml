@@ -1,24 +1,24 @@
-﻿@model PagedList.IPagedList<DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.foundItemCM>
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.ItemSearchResultCM
 @using PagedList.Mvc;
 
-@if (Model.Count == 0)
+@if (Model.foundItems.Count == 0)
 {
     <p>
-        Oh dear! it seems there were no items with that result.
+        Oh dear! it seems there were no items found with that query.
     </p>
 }
 else
 {
-    for (int i = 0; i < Model.Count; i++)
+    for (int i = 0; i < Model.foundItems.Count; i++)
     {
-        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/FoundItemRowCV.cshtml", Model[i])
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/FoundItemRowCV.cshtml", Model.foundItems[i])
     }
 
 <p>
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    Page @(Model.foundItems.PageCount < Model.foundItems.PageNumber ? 0 : Model.foundItems.PageNumber) of @Model.foundItems.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("SearchItems",
-        new { page, currentFilter = ViewBag.CurrentFilter, getItemsBy = ViewBag.currentGetItemsBy  } ) )
+    @Html.PagedListPager(Model.foundItems, page => Url.Action("SearchItems",
+        new { page, currentFilter = Model.currentFilter, getItemsBy = Model.currentGetItemsBy  } ) )
 </p>
 
     

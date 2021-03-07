@@ -145,7 +145,7 @@ namespace DndProject.Frontend.Controllers
             }
             ViewBag.CurrentFilter = searchString;
             ViewBag.currentGetItemsBy = getItemsBy;
-            IPagedList<foundItemCM> result = _implementation.SearchItems(searchString, getItemsBy, currentFilter, page);
+            ItemSearchResultCM result = _implementation.SearchItems(searchString, getItemsBy, page);
 
             return PartialView("~/Views/Character/PartialViews/ComponentViews/ItemSearchResultsCV.cshtml", result);
         }

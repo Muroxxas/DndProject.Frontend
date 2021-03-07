@@ -1,0 +1,27 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.KnownSpellRowCM
+
+<trow>
+    @Html.Hidden($"Model.SpellsTabVM.KnownSpells[{Model.Index}].Index", Model.Index)
+    <td>
+        @Model.Name;
+    </td>
+    <td>
+        @if(Model.Level <= 0)
+        {
+           @Html.Display("Cantrip")
+        }else 
+        {
+            @Html.Display(Model.Level.ToString())
+        }
+    </td>
+    <td>
+        @Model.School
+    </td>
+    <td>
+        @Html.CheckBox($"Model.SpellsTabVM.KnownSPells[{Model.Index}].isPrepared",Model.isPrepared)
+    </td>
+    <td>
+        @Html.Hidden($"Spell_id",Model.Spell_id)
+        <button class="btn btn-outline-primary knownSpellDetailsButton">More...</button>
+    </td>
+</trow>

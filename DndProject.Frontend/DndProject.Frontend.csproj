@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom\Character\CharacterForm.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -404,7 +405,6 @@
     <Content Include="Views\Character\PartialViews\InventoryTab.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\InventoryCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\HeldItemRowCV.cshtml" />
-    <Content Include="Views\Character\PartialViews\ItemsSearch.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\ItemSearchResultsCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\FoundItemRowCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\ItemDetailsCV.cshtml" />
@@ -414,6 +414,18 @@
     <Content Include="Views\Character\PartialViews\ComponentViews\NoteContentBaseCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\NoteContentCV.cshtml" />
     <Content Include="Views\Character\PartialViews\NotesTab.cshtml" />
+    <Content Include="Views\Character\PartialViews\ItemSearchPV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\ItemSearchQueryCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\SpellsTab.cshtml" />
+    <Content Include="Views\Character\PartialViews\SpellSearchPV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\KnownSpellRowCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\foundSpellRowCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\SpellSearchResultsCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\SpellSearchQueryCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\SpellDetailsCV.cshtml" />
+    <Content Include="Views\Character\CharacterForm.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\FoundSpellDetailsCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\KnownSpellDetailsCV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

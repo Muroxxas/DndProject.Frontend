@@ -1,0 +1,22 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.SpellsTabVM
+
+<button class="btn btn-outline-success" id="openSpellsSearchButton">Learn Spell...</button>
+<table class="table" id="knownSpellsTable">
+    <thead>
+        <tr>
+            <th scope="col">Spell Name</th>
+            <th scope="col">Level</th>
+            <th scope="col"> School</th>
+            <th scope="col">Prepared?</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+
+    @if (Model.KnownSpells != null && Model.KnownSpells.Length > 0)
+    {
+        @for (int i = 0; i < Model.KnownSpells.Length; i++)
+        {
+            @Html.Partial("~/Views/Character/PartialViews/ComponentViews/KnownSpellRow.cshtml", Model.KnownSpells[i])
+        }
+    }
+</table>
