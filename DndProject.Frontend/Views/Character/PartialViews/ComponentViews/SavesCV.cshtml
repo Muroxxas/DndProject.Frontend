@@ -1,0 +1,115 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.SavesCM
+
+<div class="card text-center">
+    <div class="card-body">
+        <div class="card-title">Saving Throws</div>
+        <div class="form-row">
+            <div class="form-group justify-content-start">
+                @if (Model.StrengthSaveBonus > 10)
+                {
+                    <p class="font-weight-bold">@(($"+{Model.StrengthSaveBonus}")</p>
+                }
+                else
+                {
+                    <p class="font-weight-bold">@Model.StrengthSaveBonus</p>
+                }
+            </div>
+            <div class="form-group justify-content-center">
+                <p>Strength</p>
+            </div>
+            <div class="form-group justify-content-center">
+                @Html.CheckBox("Model.PrimaryTab.SavesCM.StrengthSave", Model.StrengthSave, new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group justify-content-start">
+                @if (Model.DexteritySaveBonus > 10)
+                {
+                    <p class="font-weight-bold">@(($"+{Model.DexteritySaveBonus}")</p>
+                }
+                else
+                {
+                    <p class="font-weight-bold">@Model.DexteritySaveBonus</p>
+                }
+            </div>
+            <div class="form-group justify-content-center">
+                <p>Dexterity</p>
+            </div>
+            <div class="form-group justify-content-center">
+                @Html.CheckBox("Model.PrimaryTab.SavesCM.DexteritySave", Model.DexteritySave, new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group justify-content-start">
+                @if (Model.ConstitutionSaveBonus > 10)
+                {
+                    <p class="font-weight-bold">@(($"+{Model.ConstitutionSaveBonus}")</p>
+                }
+                else
+                {
+                    <p class="font-weight-bold">@Model.ConstitutionSaveBonus</p>
+                }
+            </div>
+            <div class="form-group justify-content-center">
+                <p>Constitution</p>
+            </div>
+            <div class="form-group justify-content-center">
+                @Html.CheckBox("Model.PrimaryTab.SavesCM.ConstitutionSave", Model.ConstitutionSave, new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group justify-content-start">
+                @if (Model.IntelligenceSaveBonus > 10)
+                {
+                    <p class="font-weight-bold">@(($"+{Model.IntelligenceSaveBonus}")</p>
+                }
+                else
+                {
+                    <p class="font-weight-bold">@Model.IntelligenceSaveBonus</p>
+                }
+            </div>
+            <div class="form-group justify-content-center">
+                <p>Intelligence</p>
+            </div>
+            <div class="form-group justify-content-center">
+                @Html.CheckBox("Model.PrimaryTab.SavesCM.IntelligenceSave", Model.IntelligenceSave, new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group justify-content-start">
+                @if (Model.WisdomSaveBonus > 10)
+                {
+                    <p class="font-weight-bold">@(($"+{Model.WisdomSaveBonus}")</p>
+                }
+                else
+                {
+                    <p class="font-weight-bold">@Model.WisdomSaveBonus</p>
+                }
+            </div>
+            <div class="form-group justify-content-center">
+                <p>Wisdom</p>
+            </div>
+            <div class="form-group justify-content-center">
+                @Html.CheckBox("Model.PrimaryTab.SavesCM.WisdomSave", Model.WisdomSave, new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group justify-content-start">
+                @if (Model.CharismaSaveBonus > 10)
+                {
+                    <p class="font-weight-bold">@(($"+{Model.CharismaSaveBonus}")</p>
+                }
+                else
+                {
+                    <p class="font-weight-bold">@Model.CharismaSaveBonus</p>
+                }
+            </div>
+            <div class="form-group justify-content-center">
+                <p>Charisma</p>
+            </div>
+            <div class="form-group justify-content-center">
+                @Html.CheckBox("Model.PrimaryTab.SavesCM.CharismaSave", Model.CharismaSave, new { @class = "form-check-input" })
+            </div>
+        </div>
+    </div>
+</div>

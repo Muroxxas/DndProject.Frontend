@@ -1,0 +1,74 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.PrimaryTabVM
+
+<div class="form-row">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.Name, "Name", new { @class = "form-label" })
+                    @Html.TextBoxFor(Model => Model.Name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.Alignment, "Alignment", new { @class = "form-label" })
+                    @Html.DropDownListFor(Model => Model.Alignment, new[] {
+                        new SelectListItem(){Text = "Lawful Good", Value = "Lawful Good"},
+                        new SelectListItem(){Text = "Neutral Good", Value = "Neutral Good"},
+                        new SelectListItem(){Text = "Chaotic Good", Value = "Chaotic Good"},
+                        new SelectListItem(){Text = "Lawful Neutral", Value = "Lawful Neutral"},
+                        new SelectListItem(){Text = "True Neutral", Value = "True Neutral"},
+                        new SelectListItem(){Text = "Chaotic Neutral", Value = "Chaotic Neutral"},
+                        new SelectListItem(){Text = "Lawful Evil", Value = "Lawful Evil"},
+                        new SelectListItem(){Text = "Neutral Evil", Value = "Neutral Evil"},
+                        new SelectListItem(){Text = "Chaotic Evil", Value = "Chaotic Evil"}
+               }, "Choose your alignment", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.Race, new { @class = "form-label" })
+                    @Html.DropDownListFor(Model => Model.Race, new SelectList(Model.Races, "Race_id", "Name"), "Select Race", new { @class = "form-input" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.Exp, "EXP", new { @class = "form-label" })
+                    @Html.TextBoxFor(Model => Model.Exp, new { @class = "form-input", @type = "number" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.Background, "Background", new { @class = "form-label" })
+                    @Html.TextBoxFor(Model => Model.Background, new { @class = "form-input" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.isInspired, "Inspiration", new { @class = "form-label" })
+                    @Html.CheckBoxFor(Model => Model.isInspired, new { @class = "form-input" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="card">
+        <div class="card-body">
+            @for (int i = 0; i < Model.Classes.SelectedClasses.Length; i++)
+            {
+                @Html.Partial("~/Views/Character/PartialViews/ComponentViews/ClassRowCV.cshtml", Model.Classes.SelectedClasses[i])
+                <hr />
+            }
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-8">
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/StatsCV.cshtml",Model.Stats)
+    </div>
+    <div class="form-group col-4">
+        @Html.Partial("~/Views/Character/PartialViews/ComponentViews/SavesCV.cshtml",Model.Saves)
+    </div>
+</div>
+
+<div class="form-row">
+    @Html.Partial("~/Views/Character/PartialViews/ComponentViews/SkillsCV.cshtml",Model.Skills)
+</div>
+
+<div class="form-row">
+    @Html.Partial("~/Views/Character/PartialViews/ComponentViews/CombatCV.cshtml",Model.Combat)
+</div>

@@ -1,0 +1,43 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.CombatCM
+
+<div class="card">
+    <div class="form-row">
+        <div class="form-group">
+            @Html.Label($"Model.PrimaryTab.Combat.ArmorClass","AC",new { @class="form-label font-weight-bold text-center"})
+            @Html.TextBoxFor(Model => Model.ArmorClass,new { @class="form-input", @type="number"})
+        </div>
+        <div class="form-group">
+            @Html.Label($"Model.PrimaryTab.Combat.MovementSpeed", "Speed", new { @class = "form-label font-weight-bold text-center" })
+            @Html.TextBoxFor(Model => Model.MovementSpeed, new { @class="form-input", @type = "number"})
+        </div>
+        <div class="form-group">
+            @Html.Label($"Model.PrimaryTab.Combat.MInitiativeBonus", "Initiative Bonus", new { @class = "form-label font-weight-bold text-center" })
+            @Html.DisplayFor(Model => Model.InitiativeBonus)
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.MaxHP,"Max HP", new { @class="form-label font-weight-bold text-center"})
+            @Html.TextBoxFor(Model => Model.MaxHP, new { @class="form-input", @type="number"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.CurrentHP, "Current HP", new { @class="form-label font-weight-bold text-center"})
+            @Html.TextBoxFor(Model => Model.CurrentHP, new { @class="form-input", type="number"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.TempHP, "Temp HP", new { @class="form-label font-weight-bold text-center"})
+            @Html.TextBoxFor(Model => Model.TempHP, new { @class = "form-input", type = "number" })
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <h2>DEATH SAVES</h2>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.DeathSaveSuccesses,"Successes", new { @class = "form-label" })
+            @Html.TextBoxFor(Model => Model.DeathSaveSuccesses, new { @class = "form-input", type="number"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.DeathSaveFails,"Fails", new { @class="form-input"})
+            @Html.TextBoxFor(Model => Model.DeathSaveFails, new { @class = "form-input", type = "number" })
+        </div>
+    </div>
+</div>

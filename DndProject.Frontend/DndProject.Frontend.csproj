@@ -426,6 +426,12 @@
     <Content Include="Views\Character\CharacterForm.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\FoundSpellDetailsCV.cshtml" />
     <Content Include="Views\Character\PartialViews\ComponentViews\KnownSpellDetailsCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\PrimaryTab.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\StatsCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\SavesCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\SkillsCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\ClassRowCV.cshtml" />
+    <Content Include="Views\Character\PartialViews\ComponentViews\CombatCV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

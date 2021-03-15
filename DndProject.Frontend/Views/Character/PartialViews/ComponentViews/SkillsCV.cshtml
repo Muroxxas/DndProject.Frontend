@@ -1,0 +1,398 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.ProficiencyCM
+
+<div class="card">
+    <div class="card-title text-right">
+        Proficiency Bonus : <p class="font-weight-bold" id="proficiencyBonusDisplay">@($"+{Model.ProficiencyBonus}")</p>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Acrobatics >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Acrobatics}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Acrobatics</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Acrobatics", new { @for = "AcrobaticsCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Dex)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Acrobatics", Model.isProficient.Acrobatics, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.AnimalHandling >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.AnimalHandling}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.AnimalHandling</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Animal Handling", new { @for = "AnimalHandlingCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Wis)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.AnimalHandling", Model.isProficient.AnimalHandling, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Arcana >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Arcana}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Arcana</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Arcana", new { @for = "ArcanaCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Int)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Arcana", Model.isProficient.Arcana, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Athletics >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Athletics}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Athletics</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Athletics", new { @for = "AthleticsCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Str)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Athletics", Model.isProficient.Athletics, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Deception >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Deception}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Deception</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Deception", new { @for = "DeceptionCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Cha)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Deception", Model.isProficient.Deception, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.History >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.History}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.History</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("History", new { @for = "HistoryCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Int)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.History", Model.isProficient.History, new { @class = "form-check-input" })
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Insight >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Insight}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Insight</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Insight", new { @for = "InsightCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Wis)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Insight", Model.isProficient.Insight, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Intimidation >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Intimidation}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Intimidation</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Intimidation", new { @for = "IntimidationCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Cha)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Intimidation", Model.isProficient.Intimidation, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Investigation >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Investigation}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Investigation</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Investigation", new { @for = "InvestigationCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Int)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Investigation", Model.isProficient.Investigation, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Medicine >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Medicine}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Medicine</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Medicine", new { @for = "MedicineCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Wis)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Medicine", Model.isProficient.Medicine, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Nature >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Nature}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Nature</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Nature", new { @for = "NatureCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Int)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Nature", Model.isProficient.Nature, new { @class = "form-check-input" })
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Perception >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Perception}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Perception</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Perception", new { @for = "PerceptionCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Wis)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Perception", Model.isProficient.Perception, new { @class = "form-check-input" })
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Performance >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Performance}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Performance</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Performance", new { @for = "PerformanceCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Cha)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Performance", Model.isProficient.Performance, new { @class = "form-check-input" })
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Persuasion >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Persuasion}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Persuasion</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Persuasion", new { @for = "PersuasionCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Cha)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Persuasion", Model.isProficient.Persuasion, new { @class = "form-check-input" })
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Religion >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Religion}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Religion</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Religion", new { @for = "ReligionCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Int)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Religion", Model.isProficient.Religion, new { @class = "form-check-input" })
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.SleightOfHand >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.SleightOfHand}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.SleightOfHand</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Sleight Of Hand", new { @for = "SleightOfHandCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Dex)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Sleight Of Hand", Model.isProficient.SleightOfHand, new { @class = "form-check-input" })
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Stealth >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Stealth}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Stealth</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Stealth", new { @for = "StealthCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Dex)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Stealth", Model.isProficient.Stealth, new { @class = "form-check-input" })
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <div class="form-row">
+                    @if (Model.TotalBonus.Survival >= 0)
+                    {
+                        <p class="font-weight-bold skillBonus">@($"+{Model.TotalBonus.Survival}")</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold skillBonus"> @Model.TotalBonus.Survival</p>
+                    }
+                </div>
+                <div class="form-row skillLabel">
+                    @Html.Label("Survival", new { @for = "SurvivalCheckbox", @class = "form-check-label" })
+                </div>
+                <div class="form-row skillStat">
+                    <p>(Wis)</p>
+                </div>
+                <div class="form-row skillCheckbox">
+                    @Html.CheckBox("Model.PrimaryTab.Skills.isProficient.Survival", Model.isProficient.Survival, new { @class = "form-check-input" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

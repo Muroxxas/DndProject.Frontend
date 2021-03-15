@@ -1,0 +1,120 @@
+﻿@model DnDProject.Entities.Character.ViewModels.PartialViewModels.Components.StatsCM
+
+<div class="card">
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group">
+                <div class="form-row">
+                    @if (Model.Bonus.Strength > 10)
+                    {
+                        <p class="font-weight-bold text-center">@($"+{Model.Bonus.Strength}"</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold text-center">@($"{Model.Bonus.Strength}"</p>
+                    }
+                </div>
+                <div class="form-row">
+                    @Html.TextBox("Model.PrimaryTab.Stats.Strength", Model.Strength)
+                </div>
+                <div class="form-row">
+                    <p class="text-center text-muted font-italic">STRENGTH</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    @if (Model.Bonus.Dexterity > 10)
+                    {
+                        <p class="font-weight-bold text-center">@($"+{Model.Bonus.Dexterity}"</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold text-center">@($"{Model.Bonus.Dexterity}"</p>
+                    }
+                </div>
+                <div class="form-row">
+                    @Html.TextBox("Model.PrimaryTab.Stats.Dexterity", Model.Dexterity)
+                </div>
+                <div class="form-row">
+                    <p class="text-center text-muted font-italic">DEXTERITY</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    @if (Model.Bonus.Constitution > 10)
+                    {
+                        <p class="font-weight-bold text-center">@($"+{Model.Bonus.Constitution}"</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold text-center">@($"{Model.Bonus.Constitution}"</p>
+                    }
+                </div>
+                <div class="form-row">
+                    @Html.TextBox("Model.PrimaryTab.Stats.Constitution", Model.Constitution)
+                </div>
+                <div class="form-row">
+                    <p class="text-center text-muted font-italic">CONSTITUTION</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div class="form-row">
+                    @if (Model.Bonus.Intelligence > 10)
+                    {
+                        <p class="font-weight-bold text-center">@($"+{Model.Bonus.Intelligence}"</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold text-center">@($"{Model.Bonus.Intelligence}"</p>
+                    }
+                </div>
+                <div class="form-row">
+                    @Html.TextBox("Model.PrimaryTab.Stats.Intelligence", Model.Intelligence)
+                </div>
+                <div class="form-row">
+                    <p class="text-center text-muted font-italic">INTELLIGENCE</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    @if (Model.Bonus.Wisdom > 10)
+                    {
+                        <p class="font-weight-bold text-center">@($"+{Model.Bonus.Wisdom}"</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold text-center">@($"{Model.Bonus.Wisdom}"</p>
+                    }
+
+                </div>
+                <div class="form-row">
+                    @Html.TextBox("Model.PrimaryTab.Stats.Wisdom", Model.Wisdom)
+                </div>
+                <div class="form-row">
+                    <p class="text-center text-muted font-italic">WISDOM</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    @if (Model.Bonus.Charisma > 10)
+                    {
+                        <p class="font-weight-bold text-center">@($"+{Model.Bonus.Charisma}"</p>
+                    }
+                    else
+                    {
+                        <p class="font-weight-bold text-center">@($"{Model.Bonus.Charisma}"</p>
+                    }
+                </div>
+                <div class="form-row">
+                    @Html.TextBox("Model.PrimaryTab.Stats.Charisma", Model.Charisma)
+                </div>
+                <div class="form-row">
+                    <p class="text-center text-muted font-italic">CHARISMA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
